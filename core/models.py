@@ -22,3 +22,23 @@ class Sobrevivente(models.Model):
     def __str__(self):
 
         return self.nome
+
+
+class Item(models.Model):
+
+    nome = models.CharField('Nome', max_length=255, null=True, blank=True)
+    valor = models.IntegerField('Valor', null=True, blank=True)
+
+    def __str__(self):
+
+        return "%s - %s" % (self.nome, self.valor)
+
+
+class Inventario(models.Model):
+
+    item = models.ForeignKey(Item, on_delete=models.SET_NULL, related_name='item_sobreviventes', null=True, blank=True)
+    sobrevivente = models.ForeignKey(Sobrevivente, on_delete=models.SET_NULL, related_name='sobrevivente_itens', null=True, blank=True)
+
+    def __str__(self):
+
+        return '%s do(a) %s' % (self.item, self.sobrevivente)

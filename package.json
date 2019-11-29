@@ -1,0 +1,37 @@
+{
+  "name": "zssn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "App.js",
+  "scripts": {
+    "build": "webpack --mode=production --config webpack.config.js --progress --colors",
+    "start": "webpack --mode=development --config webpack.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AyronFelipe/zssn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AyronFelipe/zssn/issues"
+  },
+  "homepage": "https://github.com/AyronFelipe/zssn#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "lodash": "^4.17.15",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.2.0",
+    "file-loader": "^5.0.2",
+    "vue-loader": "^15.7.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Sobrevivente
+from .models import Sobrevivente, Item
 
 
 class SobreviventeSerializer(serializers.ModelSerializer):
@@ -12,4 +12,15 @@ class SobreviventeSerializer(serializers.ModelSerializer):
             'sexo',
             'latitude',
             'longitude',
+        ]
+
+
+class ItemSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Item
+        fields = [
+            'pk',
+            'nome',
+            'valor',
         ]

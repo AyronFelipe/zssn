@@ -5,4 +5,4 @@ import lodash from 'lodash';
 
 Vue.use(axios, lodash);
 
-new Vue(Principal).$mount("#main")
+new Vue(Principal).$mount("#main");

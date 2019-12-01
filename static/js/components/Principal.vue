@@ -1,15 +1,18 @@
 <template>
-    <div>
-        <table>
-            <thead>
-                <th>Nome</th>
-                <th>Idade</th>
-            </thead>
-        </table>
+    <div class="wrapper">
+        <Sidebar />
+        <Header />
     </div>
 </template>
 <script>
+    import Sidebar from './Sidebar'
+    import Header from './Header'
+
     export default {
+        components: {
+            Sidebar,
+            Header
+        },
         data() {
             return {
                 sobreviventes: []

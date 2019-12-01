@@ -30,6 +30,7 @@
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "file-loader": "^5.0.2",
+    "inputmask": "^4.0.9",
     "vue-loader": "^15.7.2",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.41.2",

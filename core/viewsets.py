@@ -4,6 +4,7 @@ from django.db import transaction
 from .serializers import *
 from rest_framework import status
 from .models import Inventario
+from rest_framework.decorators import api_view
 
 
 class SobreviventeViewSet(viewsets.ViewSet):
@@ -64,3 +65,13 @@ class ItemViewset(viewsets.ViewSet):
         queryset = Item.objects.all()
         serializer = ItemSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def get_coordenadas(request, pk):
+
+    data = []
+    sobrevivente = Sobrevivente.objects.get(pk=pk)
+    data['latitude'] = sobrevivente.latitude
+    data['longitude'] = sobrevivente.longitude
+    return Response(data, status=status.HTTP_200_OK)

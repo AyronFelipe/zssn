@@ -12,7 +12,13 @@
                     <li class="nav-item">
                         <router-link to="/novo-sobrevivente/">
                             <i class="fas fa-plus"></i>
-                            <p>Novo Sobrevivente</p>
+                            <p>Novo sobrevivente</p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/atualizar-local/">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <p>Atualizar local</p>
                         </router-link>
                     </li>
                 </ul>

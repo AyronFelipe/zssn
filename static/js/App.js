@@ -1,8 +1,21 @@
 import Vue from 'vue';
-import axios from 'axios';
+import Router from 'vue-router';
 import Principal from './components/Principal.vue';
-import lodash from 'lodash';
+import NovoSobrevivente from './components/NovoSobrevivente.vue';
+import Inicial from './components/Inicial.vue';
 
-Vue.use(axios, lodash);
+Vue.use(Router);
 
-new Vue(Principal).$mount("#main");
+const routes = [
+    { path: '/', name: 'inicial', component: Inicial },
+    { path: '/novo-sobrevivente', name: 'novo_sobrevivente', component: NovoSobrevivente },
+]
+
+const router = new Router({ routes });
+
+new Vue({
+    el: '#main',
+    router,
+    template: '<Principal />',
+    components: { Principal }
+});

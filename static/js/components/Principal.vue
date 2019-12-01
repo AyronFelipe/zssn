@@ -1,22 +1,8 @@
 <template>
-    <div class="wrapper">
-        <Sidebar />
-        <Header />
-    </div>
+    <router-view></router-view>
 </template>
 <script>
-    import Sidebar from './Sidebar'
-    import Header from './Header'
-
     export default {
-        components: {
-            Sidebar,
-            Header
-        },
-        data() {
-            return {
-                sobreviventes: []
-            }
-        },
+        name: 'principal'
     }
 </script>

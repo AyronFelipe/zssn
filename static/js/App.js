@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import axios from 'axios';
-import Principal from './components/Principal'
+import Principal from './components/Principal.vue';
+import lodash from 'lodash';
 
-new Vue(Principal).$mount('#exemplo')
+Vue.use(axios, lodash);
+
+new Vue(Principal).$mount("#main")

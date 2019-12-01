@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     entry: './static/js/App.js',
@@ -8,12 +9,19 @@ module.exports = {
         publicPath: '/static/public/',
         filename: 'bundle.js'
     },
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+        },
+        extensions: ['*', '.js', '.vue', '.json']
+    },
     module: {
         rules: [
             {
                 test: /\.vue$/,
-                use: {
-                    loader: 'vue-loader'
+                loader: 'vue-loader',
+                options: {
+                    loaders: {}
                 }
             },
             {
@@ -35,5 +43,8 @@ module.exports = {
     performance: {
         hints: false,
     },
-    devtool: '#eval-source-map'
+    devtool: '#eval-source-map',
+    plugins: [
+        new VueLoaderPlugin()
+    ]
 }

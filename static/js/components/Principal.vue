@@ -1,9 +1,9 @@
 <template>
-    <div id="exemplo">
+    <div>
         <table>
             <thead>
-                <th>Nome<th>
-                <th>Idade<th>
+                <th>Nome</th>
+                <th>Idade</th>
             </thead>
         </table>
     </div>

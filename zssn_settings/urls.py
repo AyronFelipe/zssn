@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 from .routers import router
+from django.conf import settings
+from django.conf.urls.static import static
 from core.viewsets import get_coordenadas, informar_infectado, sobreviventes_totais, itens_sobrevivente, trocar_itens, \
 sobreviventes_infectados, sobreviventes_nao_infectados, media_recurso
 
@@ -17,3 +19,7 @@ urlpatterns = [
     path('api/sobreviventes-nao-infectados/', sobreviventes_nao_infectados, name='sobreviventes_nao_infectados'),
     path('api/media-recurso/', media_recurso, name='media_recurso'),
 ]
+
+if settings.DEBUG:
+   urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

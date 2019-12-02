@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_swagger',
     'core',
 ]
 
@@ -48,6 +49,10 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+  'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
 
 WSGI_APPLICATION = 'zssn_settings.wsgi.application'
 

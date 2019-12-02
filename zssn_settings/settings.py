@@ -58,13 +58,12 @@ REST_FRAMEWORK = {
 
 WSGI_APPLICATION = 'zssn_settings.wsgi.application'
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
-"""
 if not DEBUG:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=config('DATABASE_URL')
+        )
+    }
 
 else:
     DATABASES = {
@@ -77,7 +76,6 @@ else:
             'PORT': config('DB_PORT'),
         }
     }
-"""
 
 AUTH_PASSWORD_VALIDATORS = [
     {

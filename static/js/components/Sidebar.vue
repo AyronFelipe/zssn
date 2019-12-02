@@ -27,6 +27,12 @@
                             <p>Informar infectado</p>
                         </router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link to="/trocar-itens/">
+                            <i class="fas fa-handshake"></i>
+                            <p>Trocar itens</p>
+                        </router-link>
+                    </li>
                 </ul>
             </div>
         </div>

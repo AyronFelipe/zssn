@@ -137,3 +137,84 @@ def sobreviventes_totais(request):
     data['porcentagem_sobreviventes_infectados'] = ((100 * Sobrevivente.objects.filter(infectado=True).count()) / Sobrevivente.objects.all().count())
     return Response(data, status=status.HTTP_200_OK)
 
+
+@api_view(['GET'])
+def itens_sobrevivente(request, pk):
+
+    data = {}
+    try:
+        sobrevivente = Sobrevivente.objects.get(pk=pk)
+    except:
+        data['message'] = 'Sobrevivente não encontrado'
+        return Response(data, status=status.HTTP_400_BAD_REQUEST)
+
+    queryset = sobrevivente.sobrevivente_itens.all()
+    serializer = InventarioSerializer(queryset, many=True)
+    data['itens'] = serializer.data
+    return Response(data, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+def trocar_itens(request):
+
+    data = {}
+    try:
+        sobrevivente1 = Sobrevivente.objects.get(pk=request.data.get('sobrevivente1'))
+    except:
+        data['message'] = 'Sobrevivente 1 não encontrado'
+        return Response(data, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        sobrevivente2 = Sobrevivente.objects.get(pk=request.data.get('sobrevivente2'))
+    except:
+        data['message'] = 'Sobrevivente 2 não encontrado'
+        return Response(data, status=status.HTTP_400_BAD_REQUEST)
+
+    if sobrevivente1 == sobrevivente2:
+        data['message'] = 'Os sobreviventes da transação não podem ser os mesmos.'
+        return Response(data, status=status.HTTP_400_BAD_REQUEST)
+
+    total1 = 0
+    for item in request.data.get('itens1'):
+        multi = item.get('quantidade') * item.get('valor')
+        total1 = total1 + multi
+
+    total2 = 0
+    for item in request.data.get('itens2'):
+        multi = item.get('quantidade') * item.get('valor')
+        total2 = total2 + multi
+
+    if total1 != total2:
+        data['message'] = 'Os itens não possuem o mesmo valor.'
+        return Response(data, status=status.HTTP_400_BAD_REQUEST)
+
+    for item in request.data.get('itens1'):
+        item_obj = Item.objects.get(pk=item.get('item'))
+        Inventario.objects.create(
+            sobrevivente=sobrevivente2,
+            item=item_obj,
+            quantidade=item.get('quantidade')
+        )
+        inventario_antigo = Inventario.objects.get(pk=item.get('pk'))
+        sub = inventario_antigo.quantidade - item.get('quantidade')
+        inventario_antigo.quantidade = sub
+        inventario_antigo.save()
+    
+    for item in request.data.get('itens2'):
+        item_obj = Item.objects.get(pk=item.get('item'))
+        Inventario.objects.create(
+            sobrevivente=sobrevivente1,
+            item=item_obj,
+            quantidade=item.get('quantidade')
+        )
+        inventario_antigo = Inventario.objects.get(pk=item.get('pk'))
+        sub = inventario_antigo.quantidade - item.get('quantidade')
+        inventario_antigo.quantidade = sub
+        inventario_antigo.save()
+    
+    data['message'] = 'Itens trocados com sucesso!'
+    return Response(data, status=status.HTTP_200_OK)
+
+    return Response(data, status=status.HTTP_200_OK)
+
+

@@ -5,6 +5,7 @@ import NovoSobrevivente from './components/NovoSobrevivente.vue';
 import AtualizarLocal from './components/AtualizarLocal.vue';
 import Inicial from './components/Inicial.vue';
 import InformarInfectado from './components/InformarInfectado.vue';
+import TrocarItens from './components/TrocarItens.vue';
 
 Vue.use(Router);
 
@@ -13,6 +14,7 @@ const routes = [
     { path: '/novo-sobrevivente', name: 'novo_sobrevivente', component: NovoSobrevivente },
     { path: '/atualizar-local', name: 'atualizar_local', component: AtualizarLocal },
     { path: '/informar-infectado', name: 'informar_infectado', component: InformarInfectado },
+    { path: '/trocar-itens', name: 'trocar_itens', component: TrocarItens },
 ]
 
 const router = new Router({ routes });

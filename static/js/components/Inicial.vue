@@ -110,25 +110,11 @@
                 this.sobreviventes = res.data.sobreviventes;
                 this.porcentagem_sobreviventes_nao_infectados = res.data.porcentagem_sobreviventes_nao_infectados
                 this.porcentagem_sobreviventes_infectados = res.data.porcentagem_sobreviventes_infectados
-            })
-            .catch(error => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: error.response.data.message
-                })
-            })
+            });
             api.get('media-recurso')
             .then(res => {
                 this.estatisticas = res.data
-            })
-            .catch(error => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: error.response.data.message
-                });
-            })
+            });
         }
     }
 </script>

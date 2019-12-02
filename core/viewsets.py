@@ -94,7 +94,30 @@ class ItemViewset(viewsets.ViewSet):
 def get_coordenadas(request, pk):
 
     data = {}
-    sobrevivente = Sobrevivente.objects.get(pk=pk)
+    try:
+        sobrevivente = Sobrevivente.objects.get(pk=pk)
+    except:
+        data['message'] = 'Sobrevivente não encontrado'
+        return Response(data, status=status.HTTP_400_BAD_REQUEST)
+
     data['latitude'] = sobrevivente.latitude
     data['longitude'] = sobrevivente.longitude
+    return Response(data, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+def informar_infectado(request, pk):
+
+    data = {}
+    try:
+        sobrevivente = Sobrevivente.objects.get(pk=pk)
+    except:
+        data['message'] = 'Sobrevivente não encontrado'
+        return Response(data, status=status.HTTP_400_BAD_REQUEST)
+
+    voto = sobrevivente.votos + 1
+    sobrevivente.votos = voto
+    sobrevivente.save()
+
+    data['message'] = 'Obrigado por nos informar. O apocalipse zumbi é muito difícil mesmo.'
     return Response(data, status=status.HTTP_200_OK)

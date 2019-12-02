@@ -21,6 +21,12 @@
                             <p>Atualizar local</p>
                         </router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link to="/informar-infectado/">
+                            <i class="fas fa-atom"></i>
+                            <p>Informar infectado</p>
+                        </router-link>
+                    </li>
                 </ul>
             </div>
         </div>

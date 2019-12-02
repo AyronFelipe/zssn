@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Sobrevivente(models.Model):
@@ -18,10 +19,18 @@ class Sobrevivente(models.Model):
     sexo = models.CharField('Sexo', max_length=1, null=True, blank=True, choices=SEXO)
     latitude = models.CharField('Latitude', max_length=12, null=True, blank=True)
     longitude = models.CharField('Latitude', max_length=12, null=True, blank=True)
+    infectado = models.BooleanField('Está infectado?', default=False)
+    votos = models.IntegerField('Votos', null=True, blank=True, default=0)
 
     def __str__(self):
 
         return self.nome
+    
+    def atualizar(self):
+
+        if self.votos >= settings.NUMERO_VOTOS:
+            self.infectado = True
+            self.save()
 
 
 class Item(models.Model):

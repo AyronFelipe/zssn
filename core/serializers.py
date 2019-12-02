@@ -21,3 +21,17 @@ class ItemSerializer(serializers.ModelSerializer):
             'nome',
             'valor',
         ]
+
+
+class SobreviventesTotaisSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Sobrevivente
+        fields = [
+            'pk',
+            'nome',
+            'latitude',
+            'longitude',
+            'idade',
+            'infectado',
+        ]

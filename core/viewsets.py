@@ -121,3 +121,19 @@ def informar_infectado(request, pk):
 
     data['message'] = 'Obrigado por nos informar. O apocalipse zumbi é muito difícil mesmo.'
     return Response(data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def sobreviventes_totais(request):
+
+    data = {}
+    sobreviventes = []
+    for sobrevivente in Sobrevivente.objects.all():
+        sobrevivente.atualizar()
+        sobreviventes.append(sobrevivente)
+    serializer = SobreviventesTotaisSerializer(sobreviventes, many=True)
+    data['sobreviventes'] = serializer.data
+    data['porcentagem_sobreviventes_nao_infectados'] = ((100 * Sobrevivente.objects.filter(infectado=False).count()) / Sobrevivente.objects.all().count())
+    data['porcentagem_sobreviventes_infectados'] = ((100 * Sobrevivente.objects.filter(infectado=True).count()) / Sobrevivente.objects.all().count())
+    return Response(data, status=status.HTTP_200_OK)
+

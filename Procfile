@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn project_settings.wsgi
+web: gunicorn zssn_settings.wsgi

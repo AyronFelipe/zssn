@@ -41,41 +41,44 @@
                                                         </option>
                                                     </select>
                                                 </div>
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Item</th>
-                                                            <th>Quantidade</th>
-                                                            <th>Valor unitário</th>
-                                                            <th>Total</th>
-                                                            <th></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr v-for="(item, index) in itens1" :key="index" :item="item">
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <input type="hidden" class="form-control" v-model="item.item">
-                                                                    <input type="text" class="form-control" :value="item.item_nome" readonly>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <input type="number" class="form-control" :max="item.quantidade_total" min="1" :v-model="item.quantidade" :placeholder="item.quantidade_total" @change="onChangeQuantidade1($event, index)">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <p>{{ item.valor }}</p>
-                                                            </td>
-                                                            <td>
-                                                                <p>{{ item.quantidade * item.valor }} </p>
-                                                            </td>
-                                                            <td>
-                                                                <button class="btn btn-danger" v-on:click="excluirItem1(index)" type="button">Excluir</button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                                <div class="table-responsive">
+
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Item</th>
+                                                                <th>Quantidade</th>
+                                                                <th>Valor unitário</th>
+                                                                <th>Total</th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr v-for="(item, index) in itens1" :key="index" :item="item">
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <input type="hidden" class="form-control" v-model="item.item">
+                                                                        <input type="text" class="form-control" :value="item.item_nome" readonly>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <input type="number" class="form-control" :max="item.quantidade_total" min="1" :v-model="item.quantidade" :placeholder="item.quantidade_total" @change="onChangeQuantidade1($event, index)">
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <p>{{ item.valor }}</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>{{ item.quantidade * item.valor }} </p>
+                                                                </td>
+                                                                <td>
+                                                                    <button class="btn btn-danger" v-on:click="excluirItem1(index)" type="button">Excluir</button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-center">
@@ -92,41 +95,44 @@
                                                         </option>
                                                     </select>
                                                 </div>
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Item</th>
-                                                            <th>Quantidade</th>
-                                                            <th>Valor unitário</th>
-                                                            <th>Total</th>
-                                                            <th></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr v-for="(item, index) in itens2" :key="index" :item="item">
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <input type="hidden" class="form-control" v-model="item.item">
-                                                                    <input type="text" class="form-control" :value="item.item_nome" readonly>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <input type="number" class="form-control" :max="item.quantidade_total" min="1" :v-model="item.quantidade" :placeholder="item.quantidade_total" @change="onChangeQuantidade2($event, index)">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <p>{{ item.valor }}</p>
-                                                            </td>
-                                                            <td>
-                                                                <p>{{ item.valor * item.quantidade }}</p>
-                                                            </td>
-                                                            <td>
-                                                                <button class="btn btn-danger" v-on:click="excluirItem2(index)" type="button">Excluir</button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                                <div class="table-responsive">
+
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Item</th>
+                                                                <th>Quantidade</th>
+                                                                <th>Valor unitário</th>
+                                                                <th>Total</th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr v-for="(item, index) in itens2" :key="index" :item="item">
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <input type="hidden" class="form-control" v-model="item.item">
+                                                                        <input type="text" class="form-control" :value="item.item_nome" readonly>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <input type="number" class="form-control" :max="item.quantidade_total" min="1" :v-model="item.quantidade" :placeholder="item.quantidade_total" @change="onChangeQuantidade2($event, index)">
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <p>{{ item.valor }}</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>{{ item.valor * item.quantidade }}</p>
+                                                                </td>
+                                                                <td>
+                                                                    <button class="btn btn-danger" v-on:click="excluirItem2(index)" type="button">Excluir</button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

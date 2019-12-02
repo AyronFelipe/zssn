@@ -52,27 +52,30 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Nome</th>
-                                                <th>Idade</th>
-                                                <th>Última localização</th>
-                                                <th>Infectado?</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="sobrevivente in sobreviventes" :key="sobrevivente.pk">
-                                                <td>{{ sobrevivente.nome }}</td>
-                                                <td>{{ sobrevivente.idade }}</td>
-                                                <td>{{ sobrevivente.latitude }}S {{ sobrevivente.longitude }}O</td>
-                                                <td>
-                                                    <p v-if="sobrevivente.infectado">Sim</p>
-                                                    <p v-else>Não</p>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="table-responsive">
+
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nome</th>
+                                                    <th>Idade</th>
+                                                    <th>Última localização</th>
+                                                    <th>Infectado?</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="sobrevivente in sobreviventes" :key="sobrevivente.pk">
+                                                    <td>{{ sobrevivente.nome }}</td>
+                                                    <td>{{ sobrevivente.idade }}</td>
+                                                    <td>{{ sobrevivente.latitude }}S {{ sobrevivente.longitude }}O</td>
+                                                    <td>
+                                                        <p v-if="sobrevivente.infectado">Sim</p>
+                                                        <p v-else>Não</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

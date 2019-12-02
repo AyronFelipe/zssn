@@ -75,43 +75,46 @@
                                         <legend class="ml-4">Itens</legend>
                                         <div class="row">
                                             <div class="col-12">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Item</th>
-                                                            <th>Quantidade</th>
-                                                            <th></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr v-for="(linha, index) in linhas" :key="index" :linha="linha">
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <select name="item" id="" class="form-control" v-model="linha.id">
-                                                                        <option v-for="item in itens" :value="item.pk" :key="item.pk">
-                                                                            {{ item.nome }}
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <input type="number" min="1" class="form-control" placeholder="Quantidade que você possui desse item" v-model="linha.quantidade">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <button class="btn btn-danger" v-on:click="excluirItem(index)" type="button">Excluir</button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                    <tfoot>
-                                                        <tr>
-                                                            <td colspan="3">
-                                                                <button v-on:click="addItem" type="button" class="btn btn-primary btn-sm">Adicionar item</button>
-                                                            </td>
-                                                        </tr>
-                                                    </tfoot>
-                                                </table>
+                                                <div class="table-responsive">
+
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Item</th>
+                                                                <th>Quantidade</th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr v-for="(linha, index) in linhas" :key="index" :linha="linha">
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <select name="item" id="" class="form-control" v-model="linha.id">
+                                                                            <option v-for="item in itens" :value="item.pk" :key="item.pk">
+                                                                                {{ item.nome }}
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <input type="number" min="1" class="form-control" placeholder="Quantidade que você possui desse item" v-model="linha.quantidade">
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <button class="btn btn-danger" v-on:click="excluirItem(index)" type="button">Excluir</button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <tfoot>
+                                                            <tr>
+                                                                <td colspan="3">
+                                                                    <button v-on:click="addItem" type="button" class="btn btn-primary btn-sm">Adicionar item</button>
+                                                                </td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

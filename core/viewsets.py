@@ -56,6 +56,29 @@ class SobreviventeViewSet(viewsets.ViewSet):
             return Response(data, status=status.HTTP_201_CREATED)
 
         return Response(data, status=status.HTTP_200_OK)
+    
+    def update(self, request, pk=None):
+
+        data = {}
+        try:
+            sobrevivente = Sobrevivente.objects.get(pk=pk)
+        except:
+            data['message'] = 'Sobrevivente não encontrado.'
+            return Response(data, status=status.HTTP_400_BAD_REQUEST)
+
+        latitude = request.data.get('latitude')
+        longitude = request.data.get('longitude')
+
+        if latitude == '' or longitude == '':
+            data['message'] = 'Nenhum dos campos pode ficar em branco.'
+            return Response(data, status=status.HTTP_400_BAD_REQUEST)
+        
+        sobrevivente.latitude = latitude
+        sobrevivente.longitude = longitude
+        sobrevivente.save()
+
+        data['message'] = 'Dados alterados com sucesso'
+        return Response(data, status=status.HTTP_200_OK)
 
 
 class ItemViewset(viewsets.ViewSet):
@@ -70,7 +93,7 @@ class ItemViewset(viewsets.ViewSet):
 @api_view(['GET'])
 def get_coordenadas(request, pk):
 
-    data = []
+    data = {}
     sobrevivente = Sobrevivente.objects.get(pk=pk)
     data['latitude'] = sobrevivente.latitude
     data['longitude'] = sobrevivente.longitude

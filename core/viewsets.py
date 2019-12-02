@@ -5,6 +5,7 @@ from .serializers import *
 from rest_framework import status
 from .models import Inventario
 from rest_framework.decorators import api_view
+from django.db.models import Count
 
 
 class SobreviventeViewSet(viewsets.ViewSet):
@@ -218,3 +219,33 @@ def trocar_itens(request):
     return Response(data, status=status.HTTP_200_OK)
 
 
+@api_view(['GET'])
+def sobreviventes_infectados(request):
+
+    queryset = Sobrevivente.objects.filter(infectado=True)
+    serializer = SobreviventesTotaisSerializer(queryset, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def sobreviventes_nao_infectados(request):
+
+    queryset = Sobrevivente.objects.filter(infectado=False)
+    serializer = SobreviventesTotaisSerializer(queryset, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def media_recurso(request):
+
+    lol = []
+    for item in Item.objects.all():
+        quantidade = 0
+        for obj in item.item_sobreviventes.all():
+            if obj.sobrevivente.infectado is not True:
+                quantidade = quantidade + obj.quantidade
+        lol.append({
+            'nome': item.nome,
+            'media': quantidade / Sobrevivente.objects.filter(infectado=False).count()
+        })
+    return Response(lol, status=status.HTTP_200_OK)

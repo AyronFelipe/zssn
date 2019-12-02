@@ -9,7 +9,7 @@
                         <div class="col-md-6">
                             <div class="card card-secondary">
                                 <div class="card-body skew-shadow">
-                                    <h1>{{ porcentagem_sobreviventes_nao_infectados }} %</h1>
+                                    <h1>{{ Math.round(porcentagem_sobreviventes_nao_infectados) }} %</h1>
                                     <h5 class="op-8">Sobreviventes não infectados</h5>
                                 </div>
                             </div>
@@ -17,8 +17,28 @@
                         <div class="col-md-6">
                             <div class="card card-dark bg-secondary-gradient">
                                 <div class="card-body bubble-shadow">
-                                    <h1>{{ porcentagem_sobreviventes_infectados }} %</h1>
+                                    <h1>{{ Math.round(porcentagem_sobreviventes_infectados) }} %</h1>
                                     <h5 class="op-8">Sobreviventes infectados</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3" v-for="(stats, index) in estatisticas" :key="index">
+                            <div class="card card-stats card-primary card-round">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-5">
+                                            <div class="icon-big text-center">
+                                            </div>
+                                        </div>
+                                        <div class="col-7 col-stats">
+                                            <div class="numbers">
+                                                <p class="card-category">{{ stats.nome }}</p>
+                                                <h4 class="card-title">{{ stats.media }}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -81,6 +101,7 @@
                 sobreviventes: [],
                 porcentagem_sobreviventes_nao_infectados: '',
                 porcentagem_sobreviventes_infectados: '',
+                estatisticas: [],
             }
         },
         created() {
@@ -96,6 +117,17 @@
                     title: 'Oops...',
                     text: error.response.data.message
                 })
+            })
+            api.get('media-recurso')
+            .then(res => {
+                this.estatisticas = res.data
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.response.data.message
+                });
             })
         }
     }

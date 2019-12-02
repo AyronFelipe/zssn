@@ -167,7 +167,7 @@
             }
         },
         created() {
-            api.get('sobreviventes/')
+            api.get('sobreviventes-nao-infectados/')
             .then(res => {
                 this.sobreviventes = res.data;
             })

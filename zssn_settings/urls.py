@@ -18,8 +18,5 @@ urlpatterns = [
     path('api/sobreviventes-infectados/', sobreviventes_infectados, name='sobreviventes_infectados'),
     path('api/sobreviventes-nao-infectados/', sobreviventes_nao_infectados, name='sobreviventes_nao_infectados'),
     path('api/media-recurso/', media_recurso, name='media_recurso'),
-]
-
-if settings.DEBUG:
-   urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
